@@ -4,39 +4,30 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Person undef = new Person();
-        undef.displayInfo();
+        Person tom = new Person();
+        Person bob = new Person();
 
-        Person tom = new Person("Tom");
-        tom.displayInfo();
+        tom.displayId();    // Id = 1
+        bob.displayId();    // Id = 2
+        System.out.println(Person.counter); // 3
+
+        // изменяем Person.counter
+        Person.counter = 8;
+
+        Person sam = new Person();
+        sam.displayId();    // Id = 8
     }
 }
 class Person{
 
-    String name;    // имя
-    int age;        // возраст
+    private int id;
+    static int counter=1;
 
-    /*начало блока инициализатора*/
-    {
-        name = "Undefined";
-        age = 18;
-    }
-    /*конец блока инициализатора*/
     Person(){
-
+        id = counter++;
     }
-    Person(String name){
+    public void displayId(){
 
-        this.name = name;
-    }
-    Person(String name, int age){
-
-        this.name = name;
-        this.age = age;
-    }
-    void displayInfo(){
-        System.out.printf("Name: %s \tAge: %d\n", name, age);
+        System.out.printf("Id: %d \n", id);
     }
 }
-
-
