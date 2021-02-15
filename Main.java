@@ -7,24 +7,22 @@ public class Main {
         Person tom = new Person();
         Person bob = new Person();
 
-        tom.displayId();    // Id = 1
-        bob.displayId();    // Id = 2
-        System.out.println(Person.counter); // 3
-
-        // изменяем Person.counter
-        Person.counter = 8;
-
-        Person sam = new Person();
-        sam.displayId();    // Id = 8
+        tom.displayId();    // Id = 105
+        bob.displayId();    // Id = 106
     }
 }
 class Person{
 
     private int id;
-    static int counter=1;
+    static int counter;
 
+    static{
+        counter = 105;
+        System.out.println("Static initializer");
+    }
     Person(){
-        id = counter++;
+        id=counter++;
+        System.out.println("Constructor");
     }
     public void displayId(){
 
