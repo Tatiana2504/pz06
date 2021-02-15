@@ -1,44 +1,81 @@
 package com.metanit;
-
+import java.lang. *;
+import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+            double r;
+            Circle k1 = new Circle(3.1, 4.1, 5.1, "u205c");
+            System.out.println("Длина окружности = " + k1.getLength() + " см\n\n");
 
-        Person tom = new Person("Tom");
-        tom.display();
-        Person sam = new Employee("Sam", "Oracle");
-        sam.display();
-    }
-}
-class Person {
-
-    private String name;
-
-    public String getName() { return name; }
-
-    public Person(String name){
-
-        this.name=name;
+            Scanner source = new Scanner(System.in);
+            System.out.println("Введите радиус > ");
+            r = source.nextDouble();
+            k1.setR(r);
+            System.out.println("Длина окружности = " + k1.getLength() + " см");
+        }
     }
 
-    public void display(){
+    class Circle {
+        private double x;
+        private double y;
+        private double r;
+        private String colour;
 
-        System.out.printf("Person %s \n", name);
+        public double getX() {
+            return x;
+        }
+
+        public void setX(double x) {
+            this.x = x;
+        }
+
+        public double getY() {
+            return y;
+        }
+
+        public void setY(double y) {
+            this.y = y;
+        }
+
+        public double getR() {
+            return r;
+        }
+
+        public void setR(double r) {
+            this.r = r;
+        }
+
+        public String getColour() {
+            return colour;
+        }
+
+        public void setColour(String colour) {
+            this.colour = colour;
+        }
+
+        public Circle(double x, double y, double r, String colour) {
+            this.x = x;
+            this.y = y;
+            this.r = r;
+            this.colour = colour;
+        }
+
+        @Override
+        public String toString() {
+            return "Circle{" +
+                    "x=" + x +
+                    ", y=" + y +
+                    ", r=" + r +
+                    ", colour='" + colour + '\'' +
+                    '}';
+        }
+
+        public double getLength() {
+            double c;
+            c = 2 * Math.PI * r;
+            return c;
+        }
     }
-}
 
-class Employee extends Person{
 
-    private String company;
-
-    public Employee(String name, String company) {
-
-        super(name);
-        this.company = company;
-    }
-    @Override
-    public void display(){
-
-        System.out.printf("Employee %s works in %s \n", super.getName(), company);
-    }
-}
